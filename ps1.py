@@ -28,8 +28,7 @@ for i in range(n):
 		print(newmat[i][j].data)
 print(mat[0][0])
 
-int maxplus1=0
-int maxplus2=0
+maxplus=[]
 
 
 for i in range(n):
@@ -40,10 +39,6 @@ for i in range(n):
 			down = i+1
 			left = j-1
 			right = j+1
-			newmat[i][j].top = 1
-			newmat[i][j].down = 1
-			newmat[i][j].left = 1
-			newmat[i][j].right = 1
 
 			while(top>=0 and newmat[top][j].data != 'd'):
 				newmat[i][j].top=newmat[i][j].top+1
@@ -65,14 +60,33 @@ for i in range(n):
 			#print(newmat[i][j].down)
 			#print(newmat[i][j].left)
 			#print(newmat[i][j].right)
+			
 			newmat[i][j].plus = min(newmat[i][j].top,newmat[i][j].down,newmat[i][j].left,newmat[i][j].right)
+
+			#minimum = min(newmat[i][j].top,newmat[i][j].down,newmat[i][j].left,newmat[i][j].right)
+
+			#maximum = min(newmat[i][j].top,newmat[i][j].down,newmat[i][j].left,newmat[i][j].right)
+
+			#if(minimum == 0 and maximum > 0):
+				#newmat[i][j].plus = -1
 			#print("****")
 			#print(newmat[i][j].plus)
-			if(maxplus1<newmat[i][j].plus):
-				if(maxplus2<newmat[i][j].plus):
-					maxplus1=newmat[i][j].plus
+			maxplus.append(newmat[i][j].plus)
 
+print(maxplus)			
 
+def Range(list1): 
+    largest = list1[0] 
+    largest2 = list1[0] 
+    for item in list1:        
+        if item > largest:  
+            largest = item 
+        elif largest2!=largest and largest2 < item: 
+                largest2 = item 
+    print("Largest element is:", (largest*4)+1 , (largest2*4)+1) 
+    print("Second Largest element is:", largest2) 
+  
+Range(maxplus) 
 
 
 

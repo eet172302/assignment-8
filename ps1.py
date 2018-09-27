@@ -9,50 +9,43 @@ class Node:
 		self.plus = 0
 
 
-x = input("Enter a name: ")
+x = input("Enter dimensions: ")
 n = int(x.split(" ")[0])
 m = int(x.split(" ")[1])
 
-print(n)
-print(m)
+
 mat = [[0 for x in range(m)] for y in range(n)] 
 newmat = [[0 for x in range(m)] for y in range(n)] 
 
 for i in range(n):
 	mat[i]=input().split(" ")
-print(mat)
 		
 for i in range(n):
 	for j in range(m):
 		newmat[i][j]= Node(mat[i][j])
-		print(newmat[i][j].data)
-print(mat[0][0])
-
 maxplus=[]
-
 
 for i in range(n):
 	for j in range(m):
-		newmat[i][j]= Node(mat[i][j])
-		if(newmat[i][j].data == 's'):
+		if(newmat[i][j].data == 'S'):
 			top = i-1
 			down = i+1
 			left = j-1
 			right = j+1
 
-			while(top>=0 and newmat[top][j].data != 'd'):
+			while(top>=0 and newmat[top][j].data != 'D'):
 				newmat[i][j].top=newmat[i][j].top+1
 				top = top-1
 
-			while(down<n and newmat[top][j].data != 'd'):
+			while(down<n and newmat[down][j].data != 'D'):
 				newmat[i][j].down=newmat[i][j].down+1
 				down = down+1
 
-			while(left>=0 and newmat[i][left].data != 'd'):
+			while(left>=0 and newmat[i][left].data != 'D'):
 				newmat[i][j].left=newmat[i][j].left+1
 				left = left -1
 
-			while(right<m and newmat[i][right].data != 'd'):
+			while(right<m and newmat[i][right].data != 'D'):
 				newmat[i][j].right=newmat[i][j].right+1
 				right = right+1
 
@@ -73,7 +66,6 @@ for i in range(n):
 			#print(newmat[i][j].plus)
 			maxplus.append(newmat[i][j].plus)
 
-print(maxplus)			
 
 def Range(list1): 
     largest = list1[0] 
@@ -83,14 +75,10 @@ def Range(list1):
             largest = item 
         elif largest2!=largest and largest2 < item: 
                 largest2 = item 
-    print("Largest element is:", (largest*4)+1 , (largest2*4)+1) 
-    print("Second Largest element is:", largest2) 
-  
+    print((largest*4)+1 , (largest2*4)+1) 
+
+#print(maxplus)
 Range(maxplus) 
-
-
-
-
 
 
 

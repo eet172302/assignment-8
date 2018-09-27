@@ -14,7 +14,6 @@ list5=[]
 list6=[]
 
 for ch in strr:
-	print(ch)
 	if ch in list1:
 		list4.append(ch)
 	elif ch in list2:
@@ -22,13 +21,39 @@ for ch in strr:
 	elif ch in list3:
 		list6.append(ch)
 
+def Cloning(li1): 
+    li_copy = li1[:] 
+    return li_copy 
 
 def rotate(listt, n):
+	rlistt=[]
+	for i in range(len(listt)):
+		rlistt.append(0)
 	for i in range(len(listt)):	
-		listt[]
-
-rotate(list4,k1)
-rotate(list5,k2)
-rotate(list6,k3)
+		rlistt[i] = listt[((i-n)%len(listt))]
+	return rlistt
 
 
+rlist4=rotate(list4,k1)
+rlist5=rotate(list5,k2)
+rlist6=rotate(list6,k3)
+
+i=0
+j=0
+k=0
+
+output=[]
+for ch in strr:
+	if ch in list1:
+		output.append(rlist4[i])
+		i=i+1
+	elif ch in list2:
+		output.append(rlist5[j])
+		j=j+1
+	elif ch in list3:
+		output.append(rlist6[k])
+		k=k+1
+
+for ch in output:
+	print(ch,end="")
+print()

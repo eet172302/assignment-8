@@ -1,22 +1,23 @@
-class Node: 
-    # Function to initialize the node object 
+#Node that stores 5 things, value, top, down, left and right
+class Node:  
 	def __init__(self, data): 
-		self.data = data  # Assign data 
-		self.top = 0  # Initialize next as null 
-		self.down = 0  # Initialize next as null 
-		self.left = 0  # Initialize next as null 
-		self.right = 0  # Initialize next as null 
+		self.data = data  
+		self.top = 0
+		self.down = 0  
+		self.left = 0 
+		self.right = 0 
 		self.plus = 0
 
-
+#Take input
 x = input("Enter dimensions: ")
 n = int(x.split(" ")[0])
 m = int(x.split(" ")[1])
 
-
+#Initialize mtrix
 mat = [[0 for x in range(m)] for y in range(n)] 
 newmat = [[0 for x in range(m)] for y in range(n)] 
 
+#Take input in matrix
 for i in range(n):
 	mat[i]=input().split(" ")
 		
@@ -25,6 +26,7 @@ for i in range(n):
 		newmat[i][j]= Node(mat[i][j])
 maxplus=[]
 
+#Parse through the matrix to find no. of 's' in top, left, down, right
 for i in range(n):
 	for j in range(m):
 		if(newmat[i][j].data == 'S'):
@@ -49,25 +51,14 @@ for i in range(n):
 				newmat[i][j].right=newmat[i][j].right+1
 				right = right+1
 
-			#print(newmat[i][j].top)
-			#print(newmat[i][j].down)
-			#print(newmat[i][j].left)
-			#print(newmat[i][j].right)
-			
+			#Find min of top, down, left and right
+			#this will give length of plus on that element
 			newmat[i][j].plus = min(newmat[i][j].top,newmat[i][j].down,newmat[i][j].left,newmat[i][j].right)
 
-			#minimum = min(newmat[i][j].top,newmat[i][j].down,newmat[i][j].left,newmat[i][j].right)
-
-			#maximum = min(newmat[i][j].top,newmat[i][j].down,newmat[i][j].left,newmat[i][j].right)
-
-			#if(minimum == 0 and maximum > 0):
-				#newmat[i][j].plus = -1
-			#print("****")
-			#print(newmat[i][j].plus)
 			maxplus.append(newmat[i][j].plus)
 
-
-def Range(list1): 
+#Function to get 2 maximum elements
+def Large(list1): 
     largest = list1[0] 
     largest2 = list1[0] 
     for item in list1:        
@@ -77,9 +68,5 @@ def Range(list1):
                 largest2 = item 
     print((largest*4)+1 , (largest2*4)+1) 
 
-#print(maxplus)
-Range(maxplus) 
-
-
-
+Large(maxplus) 
 
